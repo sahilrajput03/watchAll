@@ -7,12 +7,12 @@ This all is inspired from Stackoveflow's answer [here](https://superuser.com/a/1
 - To make a service similar to [`nodemon`](https://github.com/remy/nodemon) so nobody needs to install node just for the file watching service.
 - Since the only dependency is [`inotifywait`](https://www.google.com/search?q=inotifywait) so we are customise this utility as I want specifically.
 
-## Run it like:
+## Usage:
 
 ```bash
-./watchDevelopment.sh 1.sh
-./watchDevelopment.sh 2.sh
-./watchDevelopment.sh node app.js # To be implemented later.
+./watchAll.sh 1.sh
+./watchAll.sh 2.sh
+./watchAll.sh node app.js # To be implemented later.
 ```
 
 ## Todo
