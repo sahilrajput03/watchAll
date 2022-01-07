@@ -6,24 +6,25 @@ args=$@ # This is important coz $@ is not accessible in bash functino IDK WHY!
 # My function `actions`:
 actions () {
   clear               # This is OPTIONAL ~sahil. # TODO: Add a flag to enable/disable it.
-  # echo dollarattherate: $args       # Debug only.
-    # ./2.sh $@ &                     # Note the ending & is added newly ~ Sahil.
+  old_pid=`[ $! ] && ps -aux | grep -v grep | grep -o $!`
+  # FYI:   ^^^^^^^^^ Here I say to only run ps -aux.... command if $! is not empty.
+  echo @INFO:old_pid: $old_pid
+  if [ $old_pid ] ; then kill $!; echo @KILL_INFO: Killed old process with id $!; fi
+  # WORKS SMOOTH :> #if [ $! ] ; then kill $!; echo KILL_INFO: Killed old process with id $!; fi
+
+  # echo dollarattherate: $args       # DEBUG ONLY.
+    # ./2.sh $@ &                     # NOTE THE ENDING & IS ADDED NEWLY ~ SAHIL.
   # ^^OLD..
-  ./$args &                 # Note the ending & is added newly ~ Sahil.
-  # $@ &        # works good for ```node myapp.js``` # Note the ending & is added newly ~ Sahil.
+  ./$args &                 # NOTE THE ENDING & IS ADDED NEWLY ~ SAHIL.
+  # $@ &        # works good for ```node myapp.js``` # NOTE THE ENDING & IS ADDED NEWLY ~ SAHIL.
   echo @INFO: $! is the id of the 1.sh process.
-  # Checing if older process is still running or not and only kill it if it does.
+  # Checking if the older process is still running or not and only kill it if it does.
   trap 'if [ $! ] ; then kill $!; echo; echo @KILL_INFO: Killed current process with id $!; fi' exit             # Wow this works so cool... ~ Sahil.
 }
 
 actions
 inotifywait -q -m -e close_write -r . |
 while read -r filename event; do
-  old_pid=`[ $! ] && ps -aux | grep -v grep | grep -o $!`
-  # FYI:   ^^^^^^^^^ Here I say to only run ps -aux.... command if $! is not empty.
-  echo @INFO:old_pid: $old_pid
-  if [ $old_pid ] ; then kill $!; echo @KILL_INFO: Killed old process with id $!; fi
-  # works smooth :> #if [ $! ] ; then kill $!; echo KILL_INFO: Killed old process with id $!; fi
   actions
 done
 # TODO: Test the case of input struck with bash input thing that sucked with nodemon earlier.. yo!
