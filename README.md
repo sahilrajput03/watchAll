@@ -18,5 +18,6 @@ This all is inspired from Stackoveflow's answer [here](https://superuser.com/a/1
 ## Todo
 
 - Add `./watchall node app.js` facility by checking if the argument includes the extension .sh to identify if its bash script.
+- Add a debug mode i.e., `-d` so the help logs will be printed in that case only.
 - Add a `-f` flag to watch only for that file only, i.e., currently I am using `-r` in `inotifywait` to watch over current directory and subdirectories recursively.
 - Add exception to ignore watching for the `node_modules` by default.
