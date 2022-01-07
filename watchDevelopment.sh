@@ -27,6 +27,7 @@ while read -r filename event; do
   actions
 done
 # TODO: Test the case of input struck with bash input thing that sucked with nodemon earlier.. yo!
+# ^^ The case is like when you use read and run & in the end of the script as we use it to run in background .., then our teminals stdin isn't connected to stdin of the our target script to run.. ? Get it??
 # ?PASSED: add functinonality to run the program on the script execution as well somehow.
 # ?PASSED: Check if previous script is running and kill if it is. Yikes!
 # ?PASSED: Test nodemon app with this and do verify if multiple processes are not getting accumulated.
