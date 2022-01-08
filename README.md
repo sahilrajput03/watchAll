@@ -9,10 +9,13 @@ This all is inspired from Stackoveflow's answer [here](https://superuser.com/a/1
 
 ## Usage:
 
+`watchAll -h` or `watch --help` also shows below help message.
+
 ```bash
-./watchAll.sh 1.sh
-./watchAll.sh 2.sh
-./watchAll.sh node app.js # To be implemented later.
+ watchAll node Program.js
+watchAll bash Program.sh
+watchAll python Program.py
+watchAll javac Program.java
 ```
 
 ## Todo

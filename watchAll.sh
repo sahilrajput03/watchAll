@@ -1,6 +1,15 @@
 #!/bin/bash
 # nodemon -e java,xml,gradle -x ''
-[ $# -eq 0 ] && { echo "Error: Please provide a file as argument to run.."; exit 1; }
+[ $# -le 1 ] && { echo "Please provide a executable and file as argument to run...
+
+Usage:
+          watchAll compiler/interpreter myFile.xyz
+E.g.,
+          watchAll node Program.js
+          watchAll bash Program.sh
+          watchAll python Program.py
+          watchAll javac Program.java
+"; exit 1; }
 
 args=$@ # This is important coz $@ is not accessible in bash functino IDK WHY!
 # My function `actions`:
@@ -15,8 +24,8 @@ actions () {
   # echo dollarattherate: $args       # DEBUG ONLY.
     # ./2.sh $@ &                     # NOTE THE ENDING & IS ADDED NEWLY ~ SAHIL.
   # ^^OLD..
-  ./$args &                 # NOTE THE ENDING & IS ADDED NEWLY ~ SAHIL.
-  # $@ &        # works good for ```node myapp.js``` # NOTE THE ENDING & IS ADDED NEWLY ~ SAHIL.
+  # ./$args &                 # NOTE THE ENDING & IS ADDED NEWLY ~ SAHIL.
+  $args &        # works good for ```node myapp.js``` # NOTE THE ENDING & IS ADDED NEWLY ~ SAHIL.
   echo @INFO: $! is the id of the 1.sh process.
   # Checking if the older process is still running or not and only kill it if it does.
   trap 'if [ $! ] ; then kill $!; echo; echo @KILL_INFO: Killed current process with id $!; fi' exit             # Wow this works so cool... ~ Sahil.
