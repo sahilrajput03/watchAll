@@ -26,7 +26,7 @@ actions () {
   $args &        # works good for ```node myapp.js``` # NOTE THE ENDING & IS ADDED NEWLY ~ SAHIL.
   echo @INFO: $! is the id of the 1.sh process.
   # Checking if the older process is still running or not and only kill it if it does.
-  # trap - 1 2 3 15 #Clear earlier trap.
+  # trap - 1 2 3 15 # FYI: I DON't need this at all. FYI: Clears earlier trap.
 
     trap '
       cur_pid=`[ $! ] && ps -aux | grep -v grep | grep -o $!`
