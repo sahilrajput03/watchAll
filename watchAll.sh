@@ -14,7 +14,7 @@ E.g.,
 args=$@ # This is important coz $@ is not accessible in bash functino IDK WHY!
 # My function `actions`:
 actions () {
-  # clear               # This is OPTIONAL ~sahil. # TODO: Add a flag to enable/disable it.
+  clear               # This is OPTIONAL ~sahil. # TODO: Add a flag to enable/disable it.
   old_pid=`[ $! ] && ps -aux | grep -v grep | grep -o $!` # FYI: Here I say to only run ps -aux.... command if $! is not empty.
   if [ $old_pid ] ; then echo @INFO:old_pid: $old_pid; kill $!; echo @KILL_INFO_1: Killed old process with id $!; fi
   # WORKS SMOOTH :> #if [ $! ] ; then kill $!; echo KILL_INFO: Killed old process with id $!; fi
